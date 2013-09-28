@@ -106,7 +106,7 @@
 
 	<build>
 		<defaultGoal>package</defaultGoal>
-		<finalName>eLib</finalName>
+		<finalName>ROOT</finalName>
 
 		<resources>
 			<resource>
