@@ -25,7 +25,7 @@ public class Runner {
     FolderScanner scanner = new FolderScanner();
     FolderFilter filter = new FolderFilter();
     FileNameParser parser = new FileNameParser();
-    FolderBean folderBean = scanner.scanFolder("D:\\Diploma\\Info");
+    FolderBean folderBean = scanner.scanFolder("D:\\Diploma\\Info\\tmp");
 
     folderBean = filter.filterFolderFiles(folderBean);
     // ff.filterFolderFilesByExtension(fb, FileExtension.PDF); ff.filterFolderFilesByExtension(fb, FileExtension.DJVU);
