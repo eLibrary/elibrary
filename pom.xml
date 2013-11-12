@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
@@ -22,6 +23,7 @@
 	</developers>
 
 	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.7</java.version>
 		<spring.version>3.2.3.RELEASE</spring.version>
 		<hibernate.version>4.2.2.Final</hibernate.version>
@@ -29,7 +31,6 @@
 		<servlet.api.version>2.5</servlet.api.version>
 		<servlet.jsp.api.version>2.0</servlet.jsp.api.version>
 		<maven.compiler.plugin>3.1</maven.compiler.plugin>
-		<maven.war.plugin>2.4</maven.war.plugin>
 		<maven.jetty.plugin>6.1.15</maven.jetty.plugin>
 	</properties>
 
@@ -112,19 +113,6 @@
 			<resource>
 				<directory>src/main/resources</directory>
 				<includes>
-					<include>**/*.xml</include>
-					<include>**/*.properties</include>
-				</includes>
-				<excludes>
-					<exclude>**/web.xml</exclude>
-				</excludes>
-				<targetPath>${project.build.directory}/${project.artifactId}/</targetPath>
-				<filtering>true</filtering>
-			</resource>
-
-			<resource>
-				<directory>src/main/resources</directory>
-				<includes>
 					<include>web.xml</include>
 				</includes>
 				<targetPath>${project.build.directory}/${project.artifactId}/WEB-INF/</targetPath>
@@ -142,27 +130,6 @@
 					<target>${java.version}</target>
 				</configuration>
 			</plugin>
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-war-plugin</artifactId>
-				<version>${maven.war.plugin}</version>
-				<configuration>
-					<webXml>${project.build.directory}/${project.artifactId}/WEB-INF/web.xml</webXml>
-					<webResources>
-						<resource>
-							<directory>${project.build.directory}/${project.artifactId}/</directory>
-							<includes>
-								<include>**/*.xml</include>
-							</includes>
-							<excludes>
-								<exclude>web.xml</exclude>
-							</excludes>
-						</resource>
-					</webResources>
-				</configuration>
-			</plugin>
-
 			<plugin>
 				<groupId>org.mortbay.jetty</groupId>
 				<artifactId>maven-jetty-plugin</artifactId>
