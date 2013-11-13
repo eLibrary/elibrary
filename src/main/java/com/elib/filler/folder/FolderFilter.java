@@ -54,7 +54,7 @@ public class FolderFilter extends FolderProcessor {
     if (beginIndex != -1) {
       str = file.getName().substring(beginIndex, endIndex);
     }
-    if (extension.equalsIgnoreCase(str)) {
+    if (str.equalsIgnoreCase("."+extension)) {
       return true;
     }
     return false;

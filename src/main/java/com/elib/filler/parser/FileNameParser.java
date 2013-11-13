@@ -10,15 +10,17 @@ import java.util.regex.Pattern;
 
 import com.elib.filler.bean.Book;
 import com.elib.filler.bean.FolderBean;
+import com.elib.filler.util.FileExtension;
 
 /**
  * @author Pavlo Romankevych
  * 
  */
 public class FileNameParser {
-  
-  private static final String DEFAULT_LANGUAGE = "ru";
-  private static final Integer DEFAULT_DPI = 300; 
+
+  private static final String DEFAULT_LANGUAGE = "en";
+  private static final Integer DEFAULT_DPI_DJVU = 300;
+  private static final Integer DEFAULT_DPI_PDF = 600;
   private List<Book> fileNameBeans = new ArrayList<Book>();
 
   public FileNameParser() {
@@ -59,7 +61,6 @@ public class FileNameParser {
 
   private Book parseFileName(String str) {
     Book book = new Book();
-    
     Container kromsated = parseStringAndGetValue(str.replaceAll("(_)", ""), "(\\()(K{1})(\\))", 1, 1, true);
     book.setKromsated(!kromsated.getValue().isEmpty());
     Container color = parseStringAndGetValue(kromsated.getNewString(), "(\\()(C{1})(\\))", 1, 1, true);
@@ -75,14 +76,7 @@ public class FileNameParser {
     Container pages = parseStringAndGetValue(scanmagic.getNewString(), "(\\()(\\d+?)(s\\))", 1, 2, true);
     if (!pages.getValue().isEmpty())
       book.setPages(Integer.valueOf(pages.getValue()));
-    else
-      book.setPages(0);
-    Container dpi = parseStringAndGetValue(pages.getNewString(), "(\\()(\\d+?)(dpi\\))", 1, 4, true);
-    if (!dpi.getValue().isEmpty())
-      book.setDpi(Integer.valueOf(dpi.getValue()));
-    else
-      book.setDpi(DEFAULT_DPI);
-    Container language = parseStringAndGetValue(dpi.getNewString(), "(\\()(\\w{2}+)(\\))", 1, 1, true);
+    Container language = parseStringAndGetValue(pages.getNewString(), "(\\()(\\w{2}+)(\\))", 1, 1, true);
     if (!language.getValue().isEmpty())
       book.setLanguage(language.getValue());
     else
@@ -91,10 +85,17 @@ public class FileNameParser {
     book.setIdentifier(isbn.getValue());
     Container extension = parseStringAndGetValue(isbn.getNewString(), "(\\.)(\\w{3,5}+)($)", 1, 0, true);
     book.setExtension(extension.getValue());
-    Container otherItems = parseStringAndGetValue(extension.getNewString(), "(\\)\\s\\()(.+?)(\\))", 3, 1, false);
+    Container dpi = parseStringAndGetValue(extension.getNewString(), "(\\()(\\d+?)(dpi\\))", 1, 4, true);
+    if (!dpi.getValue().isEmpty())
+      book.setDpi(Integer.valueOf(dpi.getValue()));
+    else if (book.getExtension().equalsIgnoreCase(FileExtension.DJVU))
+      book.setDpi(DEFAULT_DPI_DJVU);
+    else
+      book.setDpi(DEFAULT_DPI_PDF);
+    Container otherItems = parseStringAndGetValue(dpi.getNewString(), "(\\)\\s\\()(.+?)(\\))", 3, 1, false);
     if (otherItems.getValue().isEmpty()) {
       book.setSeries("");
-      Container editionPublisherYear = parseStringAndGetValue(extension.getNewString(), "(\\()(.+?)(\\))", 1, 1, false);
+      Container editionPublisherYear = parseStringAndGetValue(dpi.getNewString(), "(\\()(.+?)(\\))", 1, 1, false);
       if (!editionPublisherYear.getValue().isEmpty()) {
         Container year = parseStringAndGetValue(editionPublisherYear.getValue().replaceAll("(,\\s|\\s,)", ","),
                 "(\\d{4}+)", 0, 0, false);
@@ -111,8 +112,10 @@ public class FileNameParser {
         }
       }
       if (!editionPublisherYear.getNewString().isEmpty()) {
-        book.setAuthor(editionPublisherYear.getNewString());
-        book.setTitle(editionPublisherYear.getNewString());
+        Container author = parseStringAndGetValue(editionPublisherYear.getNewString(), "(.+?)([A-z]\\.{1}\\s{1})", 0,
+                1, false);
+        book.setAuthor(author.getValue());
+        book.setTitle(author.getNewString());
       }
     } else {
       Container year = parseStringAndGetValue(otherItems.getValue().replaceAll("(,\\s|\\s,)", ","), "(\\d{4}+)", 0, 0,
@@ -130,8 +133,9 @@ public class FileNameParser {
       Container series = parseStringAndGetValue(otherItems.getNewString(), "(\\(.+$)", 1, 0, false);
       book.setSeries(series.getValue());
       if (!series.getNewString().isEmpty()) {
-        book.setAuthor(series.getNewString());
-        book.setTitle(series.getNewString());
+        Container author = parseStringAndGetValue(series.getNewString(), "(.+?)([A-z]\\.{1}\\s{1})", 0, 1, false);
+        book.setAuthor(author.getValue());
+        book.setTitle(author.getNewString());
       }
     }
     System.out.println(book);

@@ -16,16 +16,16 @@ public class FolderScanner extends FolderProcessor {
   public FolderScanner() {
   }
 
-  public FolderBean scanFolder(String folderName) {
+  public FolderBean scanFolder(String folderName, boolean scanSubfolders) {
     setFolderBean(new FolderBean(folderName));
-    scan(folderName);
+    scan(folderName, scanSubfolders);
     if (getFolderBean().getFiles() != null) {
       createResultFile(getFolderBean().getFiles(), getScanResultFileName());
     }
     return getFolderBean();
   }
 
-  private void scan(String folderName) {
+  private void scan(String folderName, boolean scanSubfolder) {
     File folder = new File(folderName);
     File[] list = folder.listFiles();
     if (list == null)
@@ -36,8 +36,8 @@ public class FolderScanner extends FolderProcessor {
           getFolderBean().getFiles().add(file);
           getFolderBean().getFileNameList().add(file.getName());
         }
-      } else {
-        scan(file.getAbsolutePath());
+      } else if (scanSubfolder==true){
+        scan(file.getAbsolutePath(), scanSubfolder);        
       }
     }
   }

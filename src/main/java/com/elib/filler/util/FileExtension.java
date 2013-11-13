@@ -14,10 +14,10 @@ public final class FileExtension {
 
   private static final List<String> extensions = new ArrayList<String>();
 
-  public static final String PDF = ".pdf";
-  public static final String DJVU = ".djvu";
-  public static final String DOC = ".doc";
-  public static final String DOCX = ".docx";
+  public static final String PDF = "pdf";
+  public static final String DJVU = "djvu";
+  public static final String DOC = "doc";
+  public static final String DOCX = "docx";
 
   public static List<String> getExtensions() {
     return extensions;
