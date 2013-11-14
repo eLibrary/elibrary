@@ -32,14 +32,15 @@
 		<servlet.jsp.api.version>2.0</servlet.jsp.api.version>
 		<maven.compiler.plugin>3.1</maven.compiler.plugin>
 		<maven.jetty.plugin>6.1.15</maven.jetty.plugin>
+		<mysql.jdbc.connector>5.1.6</mysql.jdbc.connector>
 	</properties>
 
 	<dependencies>
-		<dependency>
+ 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<version>5.1.6</version>
-		</dependency>
+			<version>${mysql.jdbc.connector}</version>
+		</dependency> 
 		<!-- Spring lib -->
 		<dependency>
 			<groupId>org.springframework</groupId>
