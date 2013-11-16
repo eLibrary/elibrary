@@ -66,7 +66,7 @@ public class FileNameParser {
     if (!language.getValue().isEmpty())
       book.setLanguage(language.getValue());
     else
-      book.setLanguage(Constants.DEFAULT_LANGUAGE);
+      book.setLanguage(Constants.ENGLISH_LANGUAGE);
     Container isbn = parseStringAndGetValue(language.getNewString(), "(\\(ISBN)(.+?)(\\))", 5, 1, true);
     book.setIdentifier(isbn.getValue());
     Container extension = parseStringAndGetValue(isbn.getNewString(), "(\\.)(\\w{3,5}+)($)", 1, 0, true);

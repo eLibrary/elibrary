@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 /**
  * 
- * @author promankevych
+ * @author Pavlo Romankevych
  *
  * @param <T> entity primary key type
  */

@@ -353,4 +353,187 @@ public class Book implements java.io.Serializable, IEntity<Integer> {
             + timeAdded + ", timeLastModified=" + timeLastModified + ", owners=" + owners + ", userlibraries="
             + userlibraries + "]";
   }
+
+  @Override
+  public int hashCode() {
+    final int prime = 31;
+    int result = 1;
+    result = prime * result + ((absolutePath == null) ? 0 : absolutePath.hashCode());
+    result = prime * result + ((author == null) ? 0 : author.hashCode());
+    result = prime * result + ((bookmarks == null) ? 0 : bookmarks.hashCode());
+    result = prime * result + ((color == null) ? 0 : color.hashCode());
+    result = prime * result + ((downloadUrl == null) ? 0 : downloadUrl.hashCode());
+    result = prime * result + ((dpi == null) ? 0 : dpi.hashCode());
+    result = prime * result + ((edition == null) ? 0 : edition.hashCode());
+    result = prime * result + ((extension == null) ? 0 : extension.hashCode());
+    result = prime * result + ((filename == null) ? 0 : filename.hashCode());
+    result = prime * result + ((filesize == null) ? 0 : filesize.hashCode());
+    result = prime * result + ((id == null) ? 0 : id.hashCode());
+    result = prime * result + ((identifier == null) ? 0 : identifier.hashCode());
+    result = prime * result + ((kromsated == null) ? 0 : kromsated.hashCode());
+    result = prime * result + ((kromsatedByScanmagic == null) ? 0 : kromsatedByScanmagic.hashCode());
+    result = prime * result + ((landscape == null) ? 0 : landscape.hashCode());
+    result = prime * result + ((language == null) ? 0 : language.hashCode());
+    result = prime * result + ((md5 == null) ? 0 : md5.hashCode());
+    result = prime * result + ((ocr == null) ? 0 : ocr.hashCode());
+    result = prime * result + ((owners == null) ? 0 : owners.hashCode());
+    result = prime * result + ((pages == null) ? 0 : pages.hashCode());
+    result = prime * result + ((publisher == null) ? 0 : publisher.hashCode());
+    result = prime * result + ((series == null) ? 0 : series.hashCode());
+    result = prime * result + ((timeAdded == null) ? 0 : timeAdded.hashCode());
+    result = prime * result + ((timeLastModified == null) ? 0 : timeLastModified.hashCode());
+    result = prime * result + ((title == null) ? 0 : title.hashCode());
+    result = prime * result + ((userlibraries == null) ? 0 : userlibraries.hashCode());
+    result = prime * result + ((year == null) ? 0 : year.hashCode());
+    return result;
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj)
+      return true;
+    if (obj == null)
+      return false;
+    if (getClass() != obj.getClass())
+      return false;
+    Book other = (Book) obj;
+    if (absolutePath == null) {
+      if (other.absolutePath != null)
+        return false;
+    } else if (!absolutePath.equals(other.absolutePath))
+      return false;
+    if (author == null) {
+      if (other.author != null)
+        return false;
+    } else if (!author.equals(other.author))
+      return false;
+    if (bookmarks == null) {
+      if (other.bookmarks != null)
+        return false;
+    } else if (!bookmarks.equals(other.bookmarks))
+      return false;
+    if (color == null) {
+      if (other.color != null)
+        return false;
+    } else if (!color.equals(other.color))
+      return false;
+    if (downloadUrl == null) {
+      if (other.downloadUrl != null)
+        return false;
+    } else if (!downloadUrl.equals(other.downloadUrl))
+      return false;
+    if (dpi == null) {
+      if (other.dpi != null)
+        return false;
+    } else if (!dpi.equals(other.dpi))
+      return false;
+    if (edition == null) {
+      if (other.edition != null)
+        return false;
+    } else if (!edition.equals(other.edition))
+      return false;
+    if (extension == null) {
+      if (other.extension != null)
+        return false;
+    } else if (!extension.equals(other.extension))
+      return false;
+    if (filename == null) {
+      if (other.filename != null)
+        return false;
+    } else if (!filename.equals(other.filename))
+      return false;
+    if (filesize == null) {
+      if (other.filesize != null)
+        return false;
+    } else if (!filesize.equals(other.filesize))
+      return false;
+    if (id == null) {
+      if (other.id != null)
+        return false;
+    } else if (!id.equals(other.id))
+      return false;
+    if (identifier == null) {
+      if (other.identifier != null)
+        return false;
+    } else if (!identifier.equals(other.identifier))
+      return false;
+    if (kromsated == null) {
+      if (other.kromsated != null)
+        return false;
+    } else if (!kromsated.equals(other.kromsated))
+      return false;
+    if (kromsatedByScanmagic == null) {
+      if (other.kromsatedByScanmagic != null)
+        return false;
+    } else if (!kromsatedByScanmagic.equals(other.kromsatedByScanmagic))
+      return false;
+    if (landscape == null) {
+      if (other.landscape != null)
+        return false;
+    } else if (!landscape.equals(other.landscape))
+      return false;
+    if (language == null) {
+      if (other.language != null)
+        return false;
+    } else if (!language.equals(other.language))
+      return false;
+    if (md5 == null) {
+      if (other.md5 != null)
+        return false;
+    } else if (!md5.equals(other.md5))
+      return false;
+    if (ocr == null) {
+      if (other.ocr != null)
+        return false;
+    } else if (!ocr.equals(other.ocr))
+      return false;
+    if (owners == null) {
+      if (other.owners != null)
+        return false;
+    } else if (!owners.equals(other.owners))
+      return false;
+    if (pages == null) {
+      if (other.pages != null)
+        return false;
+    } else if (!pages.equals(other.pages))
+      return false;
+    if (publisher == null) {
+      if (other.publisher != null)
+        return false;
+    } else if (!publisher.equals(other.publisher))
+      return false;
+    if (series == null) {
+      if (other.series != null)
+        return false;
+    } else if (!series.equals(other.series))
+      return false;
+    if (timeAdded == null) {
+      if (other.timeAdded != null)
+        return false;
+    } else if (!timeAdded.equals(other.timeAdded))
+      return false;
+    if (timeLastModified == null) {
+      if (other.timeLastModified != null)
+        return false;
+    } else if (!timeLastModified.equals(other.timeLastModified))
+      return false;
+    if (title == null) {
+      if (other.title != null)
+        return false;
+    } else if (!title.equals(other.title))
+      return false;
+    if (userlibraries == null) {
+      if (other.userlibraries != null)
+        return false;
+    } else if (!userlibraries.equals(other.userlibraries))
+      return false;
+    if (year == null) {
+      if (other.year != null)
+        return false;
+    } else if (!year.equals(other.year))
+      return false;
+    return true;
+  }
+  
+  
 }

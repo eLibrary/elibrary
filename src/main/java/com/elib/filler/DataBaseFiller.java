@@ -10,6 +10,7 @@ import com.elib.filler.folder.FolderBean;
 import com.elib.filler.folder.FolderFilter;
 import com.elib.filler.folder.FolderScanner;
 import com.elib.filler.parser.FileNameParser;
+import com.elib.filler.transliterator.BookTransliterator;
 
 /**
  * @author Pavlo Romankevych
@@ -26,9 +27,11 @@ public class DataBaseFiller {
     FileNameParser parser = new FileNameParser();
     FolderBean folderBean = scanner.scanFolder("D:\\Diploma\\Info", true);
     folderBean = filter.filterFolderFiles(folderBean);
-   // folderBean = filter.filterFolderFilesByExtension(folderBean, FileExtension.DJVU);
-    List<Book> books = parser.parseFileNameToObject(folderBean);
-    System.out.println(books.size());
+    List<Book> booksPr = parser.parseFileNameToObject(folderBean);
+    System.out.println(booksPr.size());
+    BookTransliterator bookTransliterator = new BookTransliterator();
+    List<Book> booksTr = bookTransliterator.transliterateBooks(booksPr);
+    System.out.println(booksTr.size());
   }
 
 }
