@@ -12,6 +12,7 @@ public class Transliterator {
 	private boolean eng = false;
 	
 	public String translateIntoRussian(String line){
+	    line = line.replaceAll("(_)", "");
 			line = replaceUpper(line);
 			line = replaceDown(line);
 			//System.out.println(line);

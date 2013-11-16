@@ -1,5 +1,11 @@
 package com.elib.filler.parser;
 
+/**
+ * 
+ * @author Pavlo Romankevych
+ *
+ */
+
 public class Container {
 
   private String newString = "";
