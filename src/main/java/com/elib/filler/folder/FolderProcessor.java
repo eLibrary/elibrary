@@ -9,7 +9,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 
-import com.elib.filler.util.FileExtension;
+import com.elib.util.Constants;
+import com.elib.util.FileExtension;
 
 /**
  * @author Pavlo Romankevych
@@ -17,12 +18,7 @@ import com.elib.filler.util.FileExtension;
  */
 public abstract class FolderProcessor {
 
-  private final static String SCAN_RESULT_FILE_NAME = "ScanResult.txt";
-  private final static String FILTER_RESULT_FILE_NAME = "FilterResult.txt";
   private FolderBean folderBean;
-
-  public FolderProcessor() {
-  }
 
   public FolderBean getFolderBean() {
     return folderBean;
@@ -31,7 +27,7 @@ public abstract class FolderProcessor {
   public void setFolderBean(FolderBean folderBean) {
     this.folderBean = folderBean;
   }
-
+  
   protected void createResultFile(List<File> fileList, String resultFileName) {
     getFolderBean().setResultFile(new File(getFolderBean().getFolderName() + "\\" + resultFileName));
     try {
@@ -48,8 +44,8 @@ public abstract class FolderProcessor {
   }
 
   protected boolean checkAndDeleteResultFiles(File fileForChecking) {
-    if (fileForChecking.getName().equalsIgnoreCase(SCAN_RESULT_FILE_NAME)
-            || fileForChecking.getName().equalsIgnoreCase(FILTER_RESULT_FILE_NAME)) {
+    if (fileForChecking.getName().equalsIgnoreCase(Constants.SCAN_RESULT_FILE_NAME)
+            || fileForChecking.getName().equalsIgnoreCase(Constants.FILTER_RESULT_FILE_NAME)) {
       return fileForChecking.delete();
     }
     if (isFilterResultFile(fileForChecking.getName())) {
@@ -60,19 +56,11 @@ public abstract class FolderProcessor {
 
   private boolean isFilterResultFile(String fileName) {
     for (String str : FileExtension.getExtensions()) {
-      if (fileName.equalsIgnoreCase("(" + str + ")" + FILTER_RESULT_FILE_NAME)) {
+      if (fileName.equalsIgnoreCase("(" + str + ")" + Constants.FILTER_RESULT_FILE_NAME)) {
         return true;
       }
     }
     return false;
-  }
-
-  public static String getScanResultFileName() {
-    return SCAN_RESULT_FILE_NAME;
-  }
-
-  public static String getFilterResultFileName() {
-    return FILTER_RESULT_FILE_NAME;
   }
 
 }

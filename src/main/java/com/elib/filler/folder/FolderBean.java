@@ -15,7 +15,6 @@ public class FolderBean {
 
   private final String folderName;
   private List<File> files = new ArrayList<File>();
-
   private List<String> fileNameList = new ArrayList<String>();
   private File resultFile;
 

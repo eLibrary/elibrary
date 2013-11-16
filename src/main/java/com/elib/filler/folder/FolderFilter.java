@@ -5,7 +5,8 @@ package com.elib.filler.folder;
 
 import java.io.File;
 
-import com.elib.filler.util.FileExtension;
+import com.elib.util.Constants;
+import com.elib.util.FileExtension;
 
 /**
  * @author Pavlo Romankevych
@@ -27,7 +28,7 @@ public class FolderFilter extends FolderProcessor {
       }
     }
     if (getFolderBean().getFiles() != null) {
-      createResultFile(getFolderBean().getFiles(), getFilterResultFileName());
+      createResultFile(getFolderBean().getFiles(), Constants.FILTER_RESULT_FILE_NAME);
     }
     return getFolderBean();
   }
@@ -41,7 +42,7 @@ public class FolderFilter extends FolderProcessor {
       }
     }
     if (getFolderBean().getFileNameList() != null) {
-      createResultFile(getFolderBean().getFiles(), "(" + extension + ")" + getFilterResultFileName());
+      createResultFile(getFolderBean().getFiles(), "(" + extension + ")" + Constants.FILTER_RESULT_FILE_NAME);
     }
     return getFolderBean();
   }

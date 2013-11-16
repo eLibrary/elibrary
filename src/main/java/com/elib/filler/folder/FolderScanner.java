@@ -5,6 +5,8 @@ package com.elib.filler.folder;
 
 import java.io.File;
 
+import com.elib.util.Constants;
+
 /**
  * @author Pavlo Romankevych
  * 
@@ -18,7 +20,7 @@ public class FolderScanner extends FolderProcessor {
     setFolderBean(new FolderBean(folderName));
     scan(folderName, scanSubfolders);
     if (getFolderBean().getFiles() != null) {
-      createResultFile(getFolderBean().getFiles(), getScanResultFileName());
+      createResultFile(getFolderBean().getFiles(), Constants.SCAN_RESULT_FILE_NAME);
     }
     return getFolderBean();
   }

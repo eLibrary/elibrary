@@ -10,14 +10,13 @@ import com.elib.filler.folder.FolderBean;
 import com.elib.filler.folder.FolderFilter;
 import com.elib.filler.folder.FolderScanner;
 import com.elib.filler.parser.FileNameParser;
-import com.elib.filler.util.FileExtension;
 
 /**
  * @author Pavlo Romankevych
  * 
  */
-public class Runner {
-
+public class DataBaseFiller {
+  
   /**
    * @param args
    */

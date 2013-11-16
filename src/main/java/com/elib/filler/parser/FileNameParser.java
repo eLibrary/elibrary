@@ -10,7 +10,8 @@ import java.util.regex.Pattern;
 
 import com.elib.entity.Book;
 import com.elib.filler.folder.FolderBean;
-import com.elib.filler.util.FileExtension;
+import com.elib.util.Constants;
+import com.elib.util.FileExtension;
 
 /**
  * @author Pavlo Romankevych
@@ -18,27 +19,12 @@ import com.elib.filler.util.FileExtension;
  */
 public class FileNameParser {
 
-  private static final String DEFAULT_LANGUAGE = "en";
-  private static final Integer DEFAULT_DPI_DJVU = 300;
-  private static final Integer DEFAULT_DPI_PDF = 600;
-  private List<Book> fileNameBeans = new ArrayList<Book>();
-
-  public FileNameParser() {
-  }
-
-  public List<Book> getFileNameBeans() {
-    return fileNameBeans;
-  }
-
-  public void setFileNameBeans(List<Book> fileNameBeans) {
-    this.fileNameBeans = fileNameBeans;
-  }
-
   public List<Book> parseFileNameToObject(FolderBean folderBean) {
+    List<Book> books = new ArrayList<Book>();
     for (String fileName : folderBean.getFileNameList()) {
-      getFileNameBeans().add(parseFileName(fileName));
+      books.add(parseFileName(fileName));
     }
-    return getFileNameBeans();
+    return books;
   }
 
   private Container parseStringAndGetValue(String str, String valuePattern, int offsetBegin, int offsetEnd, boolean trim) {
@@ -80,7 +66,7 @@ public class FileNameParser {
     if (!language.getValue().isEmpty())
       book.setLanguage(language.getValue());
     else
-      book.setLanguage(DEFAULT_LANGUAGE);
+      book.setLanguage(Constants.DEFAULT_LANGUAGE);
     Container isbn = parseStringAndGetValue(language.getNewString(), "(\\(ISBN)(.+?)(\\))", 5, 1, true);
     book.setIdentifier(isbn.getValue());
     Container extension = parseStringAndGetValue(isbn.getNewString(), "(\\.)(\\w{3,5}+)($)", 1, 0, true);
@@ -89,9 +75,9 @@ public class FileNameParser {
     if (!dpi.getValue().isEmpty())
       book.setDpi(Integer.valueOf(dpi.getValue()));
     else if (book.getExtension().equalsIgnoreCase(FileExtension.DJVU))
-      book.setDpi(DEFAULT_DPI_DJVU);
+      book.setDpi(Constants.DEFAULT_DPI_DJVU);
     else
-      book.setDpi(DEFAULT_DPI_PDF);
+      book.setDpi(Constants.DEFAULT_DPI_PDF);
     Container otherItems = parseStringAndGetValue(dpi.getNewString(), "(\\)\\s\\()(.+?)(\\))", 3, 1, false);
     if (otherItems.getValue().isEmpty()) {
       book.setSeries("");
