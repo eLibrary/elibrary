@@ -5,8 +5,8 @@ package com.elib.filler;
 
 import java.util.List;
 
-import com.elib.filler.bean.Book;
-import com.elib.filler.bean.FolderBean;
+import com.elib.entity.Book;
+import com.elib.filler.folder.FolderBean;
 import com.elib.filler.folder.FolderFilter;
 import com.elib.filler.folder.FolderScanner;
 import com.elib.filler.parser.FileNameParser;

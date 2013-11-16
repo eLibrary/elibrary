@@ -1,6 +1,6 @@
 package com.elib.entity;
 
-// Generated Nov 14, 2013 2:32:45 AM by Hibernate Tools 4.0.0
+// Generated Nov 16, 2013 10:36:05 PM by Hibernate Tools 4.0.0
 
 import java.util.Date;
 import java.util.HashSet;
@@ -337,5 +337,16 @@ public class Book implements java.io.Serializable {
   public void setUserlibraries(Set userlibraries) {
     this.userlibraries = userlibraries;
   }
-
+  
+  @Override
+  public String toString() {
+    return "Book [id=" + id + ", title=" + title + ", author=" + author + ", series=" + series + ", edition=" + edition
+            + ", publisher=" + publisher + ", year=" + year + ", language=" + language + ", identifier=" + identifier
+            + ", landscape=" + landscape + ", ocr=" + ocr + ", kromsated=" + kromsated + ", color=" + color
+            + ", bookmarks=" + bookmarks + ", kromsatedByScanmagic=" + kromsatedByScanmagic + ", dpi=" + dpi
+            + ", pages=" + pages + ", extension=" + extension + ", filename=" + filename + ", filesize=" + filesize
+            + ", absolutePath=" + absolutePath + ", downloadUrl=" + downloadUrl + ", md5=" + md5 + ", timeAdded="
+            + timeAdded + ", timeLastModified=" + timeLastModified + ", owners=" + owners + ", userlibraries="
+            + userlibraries + "]";
+  }
 }

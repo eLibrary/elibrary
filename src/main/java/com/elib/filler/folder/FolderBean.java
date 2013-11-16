@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.elib.filler.bean;
+package com.elib.filler.folder;
 
 import java.io.File;
 import java.util.ArrayList;

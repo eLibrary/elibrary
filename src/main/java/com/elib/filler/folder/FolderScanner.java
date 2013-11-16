@@ -5,8 +5,6 @@ package com.elib.filler.folder;
 
 import java.io.File;
 
-import com.elib.filler.bean.FolderBean;
-
 /**
  * @author Pavlo Romankevych
  * 

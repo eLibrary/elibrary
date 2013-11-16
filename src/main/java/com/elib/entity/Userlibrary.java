@@ -1,6 +1,6 @@
 package com.elib.entity;
 
-// Generated Nov 14, 2013 2:32:45 AM by Hibernate Tools 4.0.0
+// Generated Nov 16, 2013 10:36:05 PM by Hibernate Tools 4.0.0
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

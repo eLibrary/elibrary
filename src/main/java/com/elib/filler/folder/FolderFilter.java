@@ -5,7 +5,6 @@ package com.elib.filler.folder;
 
 import java.io.File;
 
-import com.elib.filler.bean.FolderBean;
 import com.elib.filler.util.FileExtension;
 
 /**

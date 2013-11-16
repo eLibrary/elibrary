@@ -8,8 +8,8 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.elib.filler.bean.Book;
-import com.elib.filler.bean.FolderBean;
+import com.elib.entity.Book;
+import com.elib.filler.folder.FolderBean;
 import com.elib.filler.util.FileExtension;
 
 /**
@@ -100,7 +100,7 @@ public class FileNameParser {
         Container year = parseStringAndGetValue(editionPublisherYear.getValue().replaceAll("(,\\s|\\s,)", ","),
                 "(\\d{4}+)", 0, 0, false);
         if (!year.getValue().isEmpty())
-          book.setPublishYear(Integer.valueOf(year.getValue()));
+          book.setYear(Integer.valueOf(year.getValue()));
         if (!year.getNewString().isEmpty()) {
           Container edition = parseStringAndGetValue(year.getNewString(), "(^|\\s)(\\d{1,2}+)(e izd.,|ed.,)", 0, 2,
                   false);
@@ -121,7 +121,7 @@ public class FileNameParser {
       Container year = parseStringAndGetValue(otherItems.getValue().replaceAll("(,\\s|\\s,)", ","), "(\\d{4}+)", 0, 0,
               false);
       if (!year.getValue().isEmpty())
-        book.setPublishYear(Integer.valueOf(year.getValue()));
+        book.setYear(Integer.valueOf(year.getValue()));
       if (!year.getNewString().isEmpty()) {
         Container edition = parseStringAndGetValue(year.getNewString(), "(^|\\s)(\\d{1,2}+)(e izd.,|ed.,)", 0, 2, false);
         book.setEdition(edition.getValue());
