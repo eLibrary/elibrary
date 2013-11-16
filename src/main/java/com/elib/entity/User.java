@@ -14,6 +14,8 @@ import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.IDENTITY;
 
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -28,37 +30,38 @@ import javax.persistence.TemporalType;
 public class User implements java.io.Serializable, IEntity<Integer> {
 
   private Integer id;
+  private Role role;
   private String firstName;
   private String lastName;
   private String email;
   private String password;
   private Date dateOfBirth;
   private String avatar;
-  private int roleId;
+
   private Set<Userlibrary> userlibraries = new HashSet<Userlibrary>(0);
   private Set<Owner> owners = new HashSet<Owner>(0);
 
   public User() {
   }
 
-  public User(String firstName, String lastName, String email, String password, Date dateOfBirth, int roleId) {
+  public User(Role role, String firstName, String lastName, String email, String password, Date dateOfBirth) {
+    this.role = role;
     this.firstName = firstName;
     this.lastName = lastName;
     this.email = email;
     this.password = password;
     this.dateOfBirth = dateOfBirth;
-    this.roleId = roleId;
   }
 
-  public User(String firstName, String lastName, String email, String password, Date dateOfBirth, String avatar,
-          int roleId, Set<Userlibrary> userlibraries, Set<Owner> owners) {
+  public User(Role role, String firstName, String lastName, String email, String password, Date dateOfBirth,
+          String avatar, Set<Userlibrary> userlibraries, Set<Owner> owners) {
+    this.role = role;
     this.firstName = firstName;
     this.lastName = lastName;
     this.email = email;
     this.password = password;
     this.dateOfBirth = dateOfBirth;
     this.avatar = avatar;
-    this.roleId = roleId;
     this.userlibraries = userlibraries;
     this.owners = owners;
   }
@@ -72,6 +75,16 @@ public class User implements java.io.Serializable, IEntity<Integer> {
 
   public void setId(Integer id) {
     this.id = id;
+  }
+
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "RoleID", nullable = false)
+  public Role getRole() {
+    return this.role;
+  }
+
+  public void setRole(Role role) {
+    this.role = role;
   }
 
   @Column(name = "FirstName", nullable = false, length = 40)
@@ -127,15 +140,6 @@ public class User implements java.io.Serializable, IEntity<Integer> {
 
   public void setAvatar(String avatar) {
     this.avatar = avatar;
-  }
-
-  @Column(name = "RoleID", nullable = false)
-  public int getRoleId() {
-    return this.roleId;
-  }
-
-  public void setRoleId(int roleId) {
-    this.roleId = roleId;
   }
 
   @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")

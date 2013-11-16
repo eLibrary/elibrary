@@ -1,10 +1,15 @@
 package com.elib.entity;
 
-// Generated Nov 16, 2013 10:36:05 PM by Hibernate Tools 4.0.0
+// Generated Nov 16, 2013 11:54:38 PM by Hibernate Tools 4.0.0
+
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -13,26 +18,33 @@ import javax.persistence.Table;
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "role")
-public class Role implements java.io.Serializable, IEntity<Integer> {
+public class Role implements java.io.Serializable {
 
-  private Integer id;
+  private int id;
   private String role;
+  private Set<User> users = new HashSet<User>(0);
 
   public Role() {
   }
 
-  public Role(Integer id, String role) {
+  public Role(int id, String role) {
     this.id = id;
     this.role = role;
   }
 
+  public Role(int id, String role, Set<User> users) {
+    this.id = id;
+    this.role = role;
+    this.users = users;
+  }
+
   @Id
   @Column(name = "ID", unique = true, nullable = false)
-  public Integer getId() {
+  public int getId() {
     return this.id;
   }
 
-  public void setId(Integer id) {
+  public void setId(int id) {
     this.id = id;
   }
 
@@ -43,6 +55,15 @@ public class Role implements java.io.Serializable, IEntity<Integer> {
 
   public void setRole(String role) {
     this.role = role;
+  }
+
+  @OneToMany(fetch = FetchType.LAZY, mappedBy = "role")
+  public Set<User> getUsers() {
+    return this.users;
+  }
+
+  public void setUsers(Set<User> users) {
+    this.users = users;
   }
 
 }
