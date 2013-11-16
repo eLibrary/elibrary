@@ -47,7 +47,7 @@ public class FileNameParser {
 
   private Book parseFileName(String str) {
     Book book = new Book();
-    Container kromsated = parseStringAndGetValue(str.replaceAll("(_)", ""), "(\\()(K{1})(\\))", 1, 1, true);
+    Container kromsated = parseStringAndGetValue(str, "(\\()(K{1})(\\))", 1, 1, true);
     book.setKromsated(!kromsated.getValue().isEmpty());
     Container color = parseStringAndGetValue(kromsated.getNewString(), "(\\()(C{1})(\\))", 1, 1, true);
     book.setColor(!color.getValue().isEmpty());
