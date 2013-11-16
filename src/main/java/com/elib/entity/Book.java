@@ -53,7 +53,7 @@ public class Book implements java.io.Serializable, IEntity<Integer> {
   private Date timeAdded;
   private Date timeLastModified;
   private Set<Owner> owners = new HashSet<Owner>(0);
-  private Set<Userlibrary> userlibraries = new HashSet<Userlibrary>(0);
+  private Set<UserLibrary> userlibraries = new HashSet<UserLibrary>(0);
 
   public Book() {
   }
@@ -66,7 +66,7 @@ public class Book implements java.io.Serializable, IEntity<Integer> {
           String language, String identifier, Boolean landscape, Boolean ocr, Boolean kromsated, Boolean color,
           Boolean bookmarks, Boolean kromsatedByScanmagic, Integer dpi, Integer pages, String extension,
           String filename, Long filesize, String absolutePath, String downloadUrl, Character md5, Date timeAdded,
-          Date timeLastModified, Set<Owner> owners, Set<Userlibrary> userlibraries) {
+          Date timeLastModified, Set<Owner> owners, Set<UserLibrary> userlibraries) {
     this.title = title;
     this.author = author;
     this.series = series;
@@ -334,11 +334,11 @@ public class Book implements java.io.Serializable, IEntity<Integer> {
   }
 
   @OneToMany(fetch = FetchType.LAZY, mappedBy = "book")
-  public Set<Userlibrary> getUserlibraries() {
+  public Set<UserLibrary> getUserlibraries() {
     return this.userlibraries;
   }
 
-  public void setUserlibraries(Set<Userlibrary> userlibraries) {
+  public void setUserlibraries(Set<UserLibrary> userlibraries) {
     this.userlibraries = userlibraries;
   }
   

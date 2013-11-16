@@ -20,7 +20,7 @@ import javax.persistence.Table;
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "userlibrary")
-public class Userlibrary implements java.io.Serializable, IEntity<Integer> {
+public class UserLibrary implements java.io.Serializable, IEntity<Integer> {
 
   private Integer id;
   private Book book;
@@ -28,10 +28,10 @@ public class Userlibrary implements java.io.Serializable, IEntity<Integer> {
   private Boolean isReaded;
   private Boolean isReviewed;
 
-  public Userlibrary() {
+  public UserLibrary() {
   }
 
-  public Userlibrary(Book book, User user, Boolean isReaded, Boolean isReviewed) {
+  public UserLibrary(Book book, User user, Boolean isReaded, Boolean isReviewed) {
     this.book = book;
     this.user = user;
     this.isReaded = isReaded;

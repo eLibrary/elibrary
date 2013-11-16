@@ -38,7 +38,7 @@ public class User implements java.io.Serializable, IEntity<Integer> {
   private Date dateOfBirth;
   private String avatar;
 
-  private Set<Userlibrary> userlibraries = new HashSet<Userlibrary>(0);
+  private Set<UserLibrary> userlibraries = new HashSet<UserLibrary>(0);
   private Set<Owner> owners = new HashSet<Owner>(0);
 
   public User() {
@@ -54,7 +54,7 @@ public class User implements java.io.Serializable, IEntity<Integer> {
   }
 
   public User(Role role, String firstName, String lastName, String email, String password, Date dateOfBirth,
-          String avatar, Set<Userlibrary> userlibraries, Set<Owner> owners) {
+          String avatar, Set<UserLibrary> userlibraries, Set<Owner> owners) {
     this.role = role;
     this.firstName = firstName;
     this.lastName = lastName;
@@ -143,11 +143,11 @@ public class User implements java.io.Serializable, IEntity<Integer> {
   }
 
   @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
-  public Set<Userlibrary> getUserlibraries() {
+  public Set<UserLibrary> getUserlibraries() {
     return this.userlibraries;
   }
 
-  public void setUserlibraries(Set<Userlibrary> userlibraries) {
+  public void setUserlibraries(Set<UserLibrary> userlibraries) {
     this.userlibraries = userlibraries;
   }
 

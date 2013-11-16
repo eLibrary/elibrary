@@ -18,21 +18,21 @@ import javax.persistence.Table;
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "role")
-public class Role implements java.io.Serializable {
+public class Role implements java.io.Serializable, IEntity<Integer> {
 
-  private int id;
+  private Integer id;
   private String role;
   private Set<User> users = new HashSet<User>(0);
 
   public Role() {
   }
 
-  public Role(int id, String role) {
+  public Role(Integer id, String role) {
     this.id = id;
     this.role = role;
   }
 
-  public Role(int id, String role, Set<User> users) {
+  public Role(Integer id, String role, Set<User> users) {
     this.id = id;
     this.role = role;
     this.users = users;
@@ -40,11 +40,11 @@ public class Role implements java.io.Serializable {
 
   @Id
   @Column(name = "ID", unique = true, nullable = false)
-  public int getId() {
+  public Integer getId() {
     return this.id;
   }
 
-  public void setId(int id) {
+  public void setId(Integer id) {
     this.id = id;
   }
 
