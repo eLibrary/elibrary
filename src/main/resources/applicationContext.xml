@@ -19,4 +19,46 @@
 			<beans:value>.jsp</beans:value>
 		</beans:property>
 	</beans:bean>
+	
+	<beans:bean
+		class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
+		
+	<beans:bean id="entityManagerFactory"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<beans:property name="dataSource" ref="dataSource" />
+		<beans:property name="persistenceXmlLocation" value="classpath:persistence.xml" />
+		<beans:property name="jpaVendorAdapter">
+			<beans:bean
+				class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+				<beans:property name="database" value="org.hibernate.dialect.MySQLInnoDBDialect" />
+				<beans:property name="showSql" value="false" />
+			</beans:bean>
+		</beans:property>
+	</beans:bean>
+
+	<beans:bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<beans:property name="driverClass" value="com.mysql.jdbc.Driver" />
+		<beans:property name="jdbcUrl" value="jdbc:mysql://localhost:3306/elibrary" />
+		<beans:property name="user" value="admin" />
+		<beans:property name="password" value="elibrary" />
+		<beans:property name="maxStatements" value="500" />
+		<beans:property name="maxIdleTime" value="1800" />
+		<!-- <beans:property name="maxPoolSize" value="100" /> -->
+		<!-- <beans:property name="minPoolSize" value="10" /> -->
+		<!-- <beans:property name="initialPoolSize" value="50" /> -->
+		<!-- <beans:property name="acquireIncrement" value="5" /> -->
+		<beans:property name="numHelperThreads" value="10" />
+		<beans:property name="maxAdministrativeTaskTime" value="180" />
+		<beans:property name="maxPoolSize" value="50" />
+		<beans:property name="minPoolSize" value="2" />
+		<beans:property name="initialPoolSize" value="20" />
+		<beans:property name="acquireIncrement" value="3" />
+		<beans:property name="idleConnectionTestPeriod" value="3000" />
+	</beans:bean>
+
+	<beans:bean id="transactionManager"
+		class="org.springframework.orm.jpa.JpaTransactionManager">
+		<beans:property name="entityManagerFactory" ref="entityManagerFactory" />
+		<beans:property name="nestedTransactionAllowed" value="true" />
+	</beans:bean>
 </beans:beans>

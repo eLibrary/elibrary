@@ -113,7 +113,7 @@
 
 	<build>
 		<defaultGoal>package</defaultGoal>
-		<finalName>ROOT</finalName>
+		<finalName>elibrary</finalName>
 
 		<resources>
 			<resource>

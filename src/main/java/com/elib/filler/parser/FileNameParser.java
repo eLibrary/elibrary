@@ -31,16 +31,18 @@ public class FileNameParser {
     Container container = new Container();
     Pattern pattern = Pattern.compile(valuePattern);
     Matcher matcher;
+    String result = "";
     if (trim) {
       matcher = pattern.matcher(str.replaceAll("(\\s)", ""));
     } else {
       matcher = pattern.matcher(str);
     }
     if (matcher.find()) {
-      int endIndex = matcher.group().length() - offsetEnd;
-      container.setValue(matcher.group().substring(offsetBegin, endIndex));
+      result = matcher.group(0);
+      int endIndex = matcher.group(0).length() - offsetEnd;
+      container.setValue(result.substring(offsetBegin, endIndex));
     }
-    String newStr = str.replaceAll(pattern.toString(), "");
+    String newStr = str.replace(result, "");
     container.setNewString(newStr);
     return container;
   }
@@ -67,7 +69,7 @@ public class FileNameParser {
       book.setLanguage(language.getValue());
     else
       book.setLanguage(Constants.ENGLISH_LANGUAGE);
-    Container isbn = parseStringAndGetValue(language.getNewString(), "(\\(ISBN)(.+?)(\\))", 5, 1, true);
+    Container isbn = parseStringAndGetValue(language.getNewString(), "(\\(ISBN)(.+?)(\\))", 6, 1, false);
     book.setIdentifier(isbn.getValue());
     Container extension = parseStringAndGetValue(isbn.getNewString(), "(\\.)(\\w{3,5}+)($)", 1, 0, true);
     book.setExtension(extension.getValue());
