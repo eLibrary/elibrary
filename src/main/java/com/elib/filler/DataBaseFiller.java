@@ -26,15 +26,16 @@ import com.elib.filler.transliterator.BookTransliterator;
 @Component
 public class DataBaseFiller {
   @Autowired
-  BookDAO bookDAO;// = (BookDAO) ctx.getBean("bookDAO");
+  BookDAO bookDAO;
+
+  @SuppressWarnings("resource")
   public DataBaseFiller() {
     ApplicationContext ctx = new ClassPathXmlApplicationContext("classpath*:applicationContext.xml");
     AutowireCapableBeanFactory acbFactory = ctx.getAutowireCapableBeanFactory();
     acbFactory.autowireBean(this);
-    // TODO Auto-generated constructor stub
   }
-  
-  public void doSMth(){
+
+  public void doSMth() {
     FolderScanner scanner = new FolderScanner();
     FolderFilter filter = new FolderFilter();
     FileNameParser parser = new FileNameParser();
@@ -48,19 +49,15 @@ public class DataBaseFiller {
     List<Book> booksTr = bookTransliterator.transliterateBooks(booksPr);
     System.out.println(booksTr.size());
     bookDAO.save(booksTr.get(0));
-   // Temp temp = new Temp();
-   // temp.store(booksTr.get(0));
   }
-  
+
   /**
    * @param args
    */
-  
+
   public static void main(String[] args) {
-    //ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("classpath*:applicationContext.xml");
-DataBaseFiller baseFiller =new DataBaseFiller();
+    DataBaseFiller baseFiller = new DataBaseFiller();
     baseFiller.doSMth();
-    //.save(bookTr.get(0));
   }
 
 }

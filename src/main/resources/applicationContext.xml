@@ -11,7 +11,6 @@
 	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:util="http://www.springframework.org/schema/util"
 	xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
-	<!-- <beans:bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/> -->
 	<context:annotation-config />
 	<beans:bean class="com.elib.AppConfig" />
 
@@ -55,14 +54,12 @@
 		</beans:property>
 	</beans:bean>
 
-
 	<beans:bean id="transactionManager"
 		class="org.springframework.orm.jpa.JpaTransactionManager">
 		<beans:property name="entityManagerFactory" ref="entityManagerFactory" />
 		<beans:property name="nestedTransactionAllowed" value="true" />
 	</beans:bean>
 
-	<!-- Configures transaction management around @Transactional components -->
 	<tx:annotation-driven transaction-manager="transactionManager" />
 	<mvc:annotation-driven />
 

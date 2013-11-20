@@ -8,6 +8,11 @@ import org.springframework.context.annotation.Scope;
 import com.elib.dao.BookDAO;
 import com.elib.dao.impl.BookDAOImpl;
 
+/**
+ * 
+ * @author Pavlo Romankevych
+ *
+ */
 @Configuration
 public class AppConfig {
 
