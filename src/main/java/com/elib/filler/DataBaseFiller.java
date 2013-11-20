@@ -25,7 +25,7 @@ public class DataBaseFiller {
     FolderScanner scanner = new FolderScanner();
     FolderFilter filter = new FolderFilter();
     FileNameParser parser = new FileNameParser();
-    FolderBean folderBean = scanner.scanFolder("D:\\Diploma\\Info", true);
+    FolderBean folderBean = scanner.scanFolder("D:\\mFedyna\\diploma\\books\\JAVA-RU", true);
     folderBean = filter.filterFolderFiles(folderBean);
     List<Book> booksPr = parser.parseFileNameToObject(folderBean);
     System.out.println(booksPr.size());

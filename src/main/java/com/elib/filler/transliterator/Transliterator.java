@@ -12,21 +12,24 @@ public class Transliterator {
 	private boolean eng = false;
 	
 	public String translateIntoRussian(String line){
-	    //line = line.replaceAll("(_)", "");
 			line = replaceUpper(line);
 			line = replaceDown(line);
+			line = line.replaceAll("(__)", "");
 			//System.out.println(line);
 		return line;
 	} 
 	
 	private String replaceUpper(String word){
+		eng = false;
 		List<String> array = toList(word);
 		for(int i = 0; i < array.size(); i++){
-			if(eng == true) continue;
 			if( array.get(i).equals("_") && array.get(i+1).equals("_")){
+				i++;
 				if(eng) eng = false;
 				else eng = true;
+				continue;
 			}
+			if(eng == true) continue;
 			if(i < array.size()-3 && array.get(i).equals("S") && array.get(i+1).equals("h") && array.get(i+2).equals("c") && array.get(i+3).equals("h")) {
 				array.set(i, "Щ");
 				array.remove(i+1);
@@ -123,6 +126,10 @@ public class Transliterator {
 				array.set(i, "В");
 				continue;
 			}
+			if(array.get(i).equals("W")) {
+				array.set(i, "В");
+				continue;
+			}
 			if(array.get(i).equals("A")) {
 				array.set(i, "А");
 				continue;
@@ -173,13 +180,14 @@ public class Transliterator {
 
 	
 	private String replaceDown(String word){
+		eng = false;
 		List<String> array = toList(word);
 		for(int i = 0; i < array.size(); i++){
-			if(eng == true) continue;
 			if( array.get(i).equals("_") && array.get(i+1).equals("_")){
-				if(eng) eng = false;
+				if(eng == true) eng = false;
 				else eng = true;
 			}
+			if(eng == true) continue;
 			if(i < array.size()-3 && array.get(i).equals("s") && array.get(i+1).equals("h") && array.get(i+2).equals("c") && array.get(i+3).equals("h")) {
 				array.set(i, "щ");
 				array.remove(i+1);
@@ -273,6 +281,10 @@ public class Transliterator {
 				continue;
 			}
 			if(array.get(i).equals("v")) {
+				array.set(i, "в");
+				continue;
+			}
+			if(array.get(i).equals("w")) {
 				array.set(i, "в");
 				continue;
 			}
