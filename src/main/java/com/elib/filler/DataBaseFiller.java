@@ -11,9 +11,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Component;
 
-import com.elib.AppConfig;
 import com.elib.dao.BookDAO;
-import com.elib.dao.UserDAO;
 import com.elib.entity.Book;
 import com.elib.filler.folder.FolderBean;
 import com.elib.filler.folder.FolderFilter;
@@ -40,7 +38,9 @@ public class DataBaseFiller {
     FolderScanner scanner = new FolderScanner();
     FolderFilter filter = new FolderFilter();
     FileNameParser parser = new FileNameParser();
+
     FolderBean folderBean = scanner.scanFolder("D:\\Diploma\\Info\\tmp", true);
+
     folderBean = filter.filterFolderFiles(folderBean);
     List<Book> booksPr = parser.parseFileNameToObject(folderBean);
     System.out.println(booksPr.size());
