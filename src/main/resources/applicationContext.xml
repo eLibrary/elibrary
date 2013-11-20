@@ -37,7 +37,7 @@
 		<beans:property name="jdbcUrl"
 			value="jdbc:mysql://localhost:3306/elibrary" />
 		<beans:property name="user" value="admin" />
-		<beans:property name="password" value="eibrary" />
+		<beans:property name="password" value="elibrary" />
 	</beans:bean>
 
 	<beans:bean id="entityManagerFactory"
