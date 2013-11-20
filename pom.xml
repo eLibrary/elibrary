@@ -126,7 +126,6 @@
 		<finalName>elibrary</finalName>
 
 		<resources>
-
 			<resource>
 				<directory>src/main/resources</directory>
 				<includes>
