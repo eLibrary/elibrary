@@ -10,6 +10,16 @@
 	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:util="http://www.springframework.org/schema/util"
 	xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+	<!-- <beans:bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/> -->
+	<context:annotation-config />
+	<beans:bean class="com.elib.AppConfig" />
+
+	<beans:bean id="viewNameTranslator"
+		class="org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator" />
+
+	<beans:bean class="org.springframework.web.servlet.view.BeanNameViewResolver" />
+
 	<beans:bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix">
@@ -19,10 +29,18 @@
 			<beans:value>.jsp</beans:value>
 		</beans:property>
 	</beans:bean>
-	
+
 	<beans:bean
 		class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
-		
+
+	<beans:bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<beans:property name="driverClass" value="com.mysql.jdbc.Driver" />
+		<beans:property name="jdbcUrl"
+			value="jdbc:mysql://localhost:3306/elibrary" />
+		<beans:property name="user" value="admin" />
+		<beans:property name="password" value="eibrary" />
+	</beans:bean>
+
 	<beans:bean id="entityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<beans:property name="dataSource" ref="dataSource" />
@@ -30,35 +48,22 @@
 		<beans:property name="jpaVendorAdapter">
 			<beans:bean
 				class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
-				<beans:property name="database" value="org.hibernate.dialect.MySQLInnoDBDialect" />
-				<beans:property name="showSql" value="false" />
+				<beans:property name="database"
+					value="MYSQL" />
+				<beans:property name="showSql" value="true" />
 			</beans:bean>
 		</beans:property>
 	</beans:bean>
 
-	<beans:bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
-		<beans:property name="driverClass" value="com.mysql.jdbc.Driver" />
-		<beans:property name="jdbcUrl" value="jdbc:mysql://localhost:3306/elibrary" />
-		<beans:property name="user" value="admin" />
-		<beans:property name="password" value="elibrary" />
-		<beans:property name="maxStatements" value="500" />
-		<beans:property name="maxIdleTime" value="1800" />
-		<!-- <beans:property name="maxPoolSize" value="100" /> -->
-		<!-- <beans:property name="minPoolSize" value="10" /> -->
-		<!-- <beans:property name="initialPoolSize" value="50" /> -->
-		<!-- <beans:property name="acquireIncrement" value="5" /> -->
-		<beans:property name="numHelperThreads" value="10" />
-		<beans:property name="maxAdministrativeTaskTime" value="180" />
-		<beans:property name="maxPoolSize" value="50" />
-		<beans:property name="minPoolSize" value="2" />
-		<beans:property name="initialPoolSize" value="20" />
-		<beans:property name="acquireIncrement" value="3" />
-		<beans:property name="idleConnectionTestPeriod" value="3000" />
-	</beans:bean>
 
 	<beans:bean id="transactionManager"
 		class="org.springframework.orm.jpa.JpaTransactionManager">
 		<beans:property name="entityManagerFactory" ref="entityManagerFactory" />
 		<beans:property name="nestedTransactionAllowed" value="true" />
 	</beans:bean>
+
+	<!-- Configures transaction management around @Transactional components -->
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	<mvc:annotation-driven />
+
 </beans:beans>
