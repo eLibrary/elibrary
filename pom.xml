@@ -37,6 +37,11 @@
 
 	<dependencies>
 		<dependency>
+			<groupId>com.elibrary.db.tools</groupId>
+			<artifactId>db-tools</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>${mysql.jdbc.connector}</version>
@@ -123,7 +128,7 @@
 
 	<build>
 		<defaultGoal>package</defaultGoal>
-		<finalName>elibrary</finalName>
+		<finalName>ROOT</finalName>
 
 		<resources>
 			<resource>
