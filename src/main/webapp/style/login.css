@@ -57,6 +57,16 @@ body {
 	border-radius: 15px;
 }
 
+#registration{
+	margin-top: -150px;
+	visibility: hidden;
+	background-color: #27A0B1;
+	border: 3px solid #000;
+	border-radius: 15px;
+	padding-bottom: 15px;
+	padding-top: 15px;
+}
+
 .login-input{
 	width: 250px;
 	height: 35px;
