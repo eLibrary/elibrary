@@ -1,0 +1,11 @@
+#right-part{
+	margin-top: 20px;
+	width: 70%;
+	float: left;
+}
+
+#left-part{
+	margin-top: 20px;
+	width: 30%;
+	float: left;
+}
