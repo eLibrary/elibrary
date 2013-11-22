@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <title>ELibrary</title>
 <link rel='stylesheet' href='../style/login.css' type='text/css'/>
 <link rel='stylesheet' href='../style/header.css' type='text/css'/>
 </head>
 <body>
+
 	<div class="header">
 	 	<div class="logo">
 	 		<a href="#" class='logotype'>eLibrary</a>
@@ -16,21 +17,38 @@
 	 		<a href="#" class='header-button'>search</a>
 	 	</div>
 	 	<div class='registration' align="right">
-	 		<a href='#' class='header-button'>registration</a>
+	 		<a href='#' class='header-button' id='sign'>Sign in</a>
 	 	</div>
 	</div>
-	<div class='content' align='center'>
-		<div class='login-form'>
-			<input type='text' class='login-input' placeholder='login'/>
-			<br/>
-			<input type='password' class='login-input' placeholder='password'/>
-			<br/>
-			<a href='#' class='submit-form-button'>Login</a>
-			<a href='#' class='submit-form-button'> Registration</a>
+	
+	<div class='place' align='center'>
+		<div class='search-place'>
+			<div class='seach-form'>
+				<div class='search-input'>
+					<p class='search-label'>Please enter title or author book</p>
+					<input type='text' placeholder='put something' class='search-input-form'/>
+				</div>
+				<div class='search-table'>
+					<table id='search-table'></table>
+				</div>
+			</div>
 		</div>
-		<footer>
-			<p class='developers'> ©eLibrary <br/> Romankevych Pavlo <br/> Fedyna Mykhaylo</p>
-		</footer>
+		
+		<div class='login-place'>
+			<div id='login-form'>
+				<input type='text' class='login-input' placeholder='login'/>
+				<br/>
+				<input type='password' class='login-input' placeholder='password'/>
+				<br/>
+				<a href='#' class='submit-form-button'>Login</a>
+				<a href='#' class='submit-form-button'> Registration</a>
+			</div>
+		</div>	
 	</div>
+	
+		<footer align='center'>
+			<p class='developers'> Â©eLibrary <br/> Romankevych Pavlo <br/> Fedyna Mykhaylo</p>
+		</footer>
 </body>
+<script type='text/javascript' id="one" src="../script/login.js"></script>
 </html>
