@@ -1,5 +1,14 @@
+var logReg = false;
+
 function login(){
-	document.getElementById('login-form').style.visibility = "visible";
+	if(!logReg){
+		document.getElementById('login-form').style.visibility = "visible";
+		logReg = true;
+	}else {
+		logReg = false;
+		document.getElementById('registration').style.visibility = 'hidden';
+		document.getElementById('login-form').style.visibility = "hidden";
+	}
 }
 
 function registr(){
