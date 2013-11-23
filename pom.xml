@@ -37,8 +37,8 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>com.elibrary.db.tools</groupId>
-			<artifactId>db-tools</artifactId>
+			<groupId>com.elibrary.book.processor</groupId>
+			<artifactId>book-processor</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		<dependency>
