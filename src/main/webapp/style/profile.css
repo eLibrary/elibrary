@@ -1,11 +1,20 @@
 #right-part{
 	margin-top: 20px;
-	width: 70%;
+	width: 60%;
 	float: left;
 }
 
 #left-part{
 	margin-top: 20px;
-	width: 30%;
+	width: 20%;
 	float: left;
+}
+
+#chat {
+	width: 20%;
+	float: left;
+}
+
+#place {
+	height: 550px;
 }
