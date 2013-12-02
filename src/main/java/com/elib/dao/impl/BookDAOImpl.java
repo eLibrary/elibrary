@@ -50,4 +50,13 @@ public class BookDAOImpl extends GenericDAOImpl<Book, Integer> implements BookDA
     return res.size() > 0 ? res : null;
   }
 
+  @Override
+  public Book findByMD5(String md5) {
+    Query query = getEntityManager().createQuery("select b from Book b where b.md5 = :md5");
+    query.setParameter("md5", md5);
+    @SuppressWarnings("unchecked")
+    List<Book> res = query.setMaxResults(1).getResultList();
+    return res.size() > 0 ? res.get(0) : null;
+  }
+
 }

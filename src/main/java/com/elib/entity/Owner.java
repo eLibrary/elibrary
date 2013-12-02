@@ -2,7 +2,6 @@ package com.elib.entity;
 
 // Generated Nov 16, 2013 10:36:05 PM by Hibernate Tools 4.0.0
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -46,7 +45,7 @@ public class Owner implements java.io.Serializable, IEntity<Integer> {
     this.id = id;
   }
 
-  @ManyToOne(fetch = FetchType.EAGER, cascade={CascadeType.PERSIST, CascadeType.REFRESH})
+  @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "BookID")
   public Book getBook() {
     return this.book;
@@ -56,7 +55,7 @@ public class Owner implements java.io.Serializable, IEntity<Integer> {
     this.book = book;
   }
 
-  @ManyToOne(fetch = FetchType.EAGER)
+  @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "UserID")
   public User getUser() {
     return this.user;

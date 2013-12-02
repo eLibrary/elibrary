@@ -15,6 +15,8 @@ import com.elib.dao.impl.OwnerDAOImpl;
 import com.elib.dao.impl.RoleDAOImpl;
 import com.elib.dao.impl.UserDAOImpl;
 import com.elib.dao.impl.UserLibraryDAOImpl;
+import com.elib.service.UserService;
+import com.elib.service.impl.UserServiceImpl;
 
 /**
  * 
@@ -53,4 +55,11 @@ public class AppConfig {
   public RoleDAO roleDAO() {
     return new RoleDAOImpl();
   }
+  
+  @Bean
+  @Scope(ConfigurableBeanFactory.SCOPE_SINGLETON)
+  public UserService userService(){
+    return new UserServiceImpl();
+  }
+  
 }

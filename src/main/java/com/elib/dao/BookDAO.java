@@ -28,6 +28,13 @@ public interface BookDAO extends Serializable, GenericDAO<Book, Integer> {
   
   /**
    * 
+   * @param md5
+   * @return book
+   */
+  Book findByMD5(String md5);
+  
+  /**
+   * 
    * @return all books
    */
   List<Book> getAllBooks();
