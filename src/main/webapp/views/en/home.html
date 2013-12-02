@@ -27,7 +27,8 @@
 		<div class='search-place'>
 			<div class='search-form'>
 				<div class='search-input'>
-					<label class='search-label'>Search:</label> <input type='text' placeholder='put something' class='search-input-form'/>
+					<label class='search-label'>Search:</label> <input type='text'  class='search-input-form' id='searchValue'/>
+					<a href="#" id='search-button' class='header-button'>search</a>
 				</div>
 				<div class='search-table'>
 					<table id='search-table'></table>
@@ -37,25 +38,25 @@
 		
 		<div class='login-place'>
 			<div id='login-form'>
-				<input type='text' class='login-input' placeholder='e-mail'/>
+				<input type='text' class='login-input' placeholder='e-mail' id='email-input'/>
 				<br/>
-				<input type='password' class='login-input' placeholder='password'/>
+				<input type='password' class='login-input' placeholder='password' id='pass-input'/>
 				<br/>
 				<a href='#' class='submit-form-button'id='login'>Login</a>
 				<a href='#' class='submit-form-button' id=registr> Registration</a>
 			</div>
 			<div id='registration'>
-				<input type='text' class='login-input' placeholder='first name'/>
+				<input type='text' class='login-input' placeholder='first name' id='firstName'/>
 				<br/>
-				<input type='text' class='login-input' placeholder='last name'/>
+				<input type='text' class='login-input' placeholder='last name'id='lasttName'/>
 				<br/>
-				<input type='text' class='login-input' placeholder='email'/>
+				<input type='text' class='login-input' placeholder='email' id='email-reg'/>
 				<br/>
-				<input type='text' class='login-input' placeholder='password'/>
+				<input type='text' class='login-input' placeholder='password' id='pass'/>
 				<br/>
 				<input type='text' class='login-input' placeholder='confirm password'/>
 				<br/>
-				<input type='date' class='login-input'/>
+				<input type='date' class='login-input' id='date'>
 				<br/>
 				<a href='#' id='submitRegistr' class='submit-form-button'>Registration</a>
 			</div>
@@ -66,5 +67,6 @@
 			<p class='developers'> ©eLibrary <br/> Romankevych Pavlo <br/> Fedyna Mykhaylo</p>
 		</footer>
 </body>
-<script type='text/javascript' id="one" src="../script/login.js"></script>
+<script type='text/javascript' id="one" src="../../script/login.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 </html>

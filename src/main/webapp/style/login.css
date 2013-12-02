@@ -1,9 +1,12 @@
 body {
-	/* background-image: url(../resources/images/background.jpg);
-	background-repeat: no-repeat;
-	background-position: center;
-	background-attachment: inherit; */
+        text-align: center;
+        background: url(../resources/images/background.jpg) no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
 }
+
 
 .search-place{
 	float: left;

@@ -5,7 +5,8 @@
 <title>eLibrary</title>
 <link rel='stylesheet' href='../../style/header.css' type='text/css'/>
 <link rel='stylesheet' href='../../style/navigation.css' type='text/css'/>
-<link rel='stylesheet' href='../../style/admin.css' type='text/css'/>
+<link rel='stylesheet' href='../../style/profile.css' type='text/css'/>
+<link rel='stylesheet' href='../../style/login.css' type='text/css'/>
 </head>
 <body>
 	<div class="header">
@@ -32,24 +33,30 @@
 		</div>
 		<div id='left-part'>
 			<div class='navigation-buttons'>
-				<a href='./searchUsers_admin.html' class='navigation-button'>Search Users</a><br/>
-				<a href='./searchBooks_admin.html' class='navigation-button'>Search Books</a><br/>
-				<a href='./changeBook_admin.html' class='navigation-button'>Change books</a><br/>
-				<a href='./newBook_admin.html' class='navigation-button'>Upload new book</a>
+				<a href='./searchBook_user.html' class='navigation-button'>Search</a><br/>
+				<a href='./profile.html' class='navigation-button'>My profile</a><br/>
+				<a href='./library_user.html' class='navigation-button'>My library</a><br/>
+				<a href='./settings_user.html' class='navigation-button'>My settings</a><br/>
+				<a href='./newBook_user.html' class='navigation-button'>Upload new book</a>
 			</div>
 		</div>
 		<div id='right-part' align='center'>
-			<label class='search-label'>Books:</label>
-			<input type='text' placeholder='book' class='search-input'/><br/>
-			<input type="checkbox" id="author" value="a1">Author&nbsp;&nbsp;&nbsp;
-			<input type="checkbox" id="title" value="a2">Title&nbsp;&nbsp;&nbsp;
-			<input type="checkbox" id="edition" value="a3">Edition&nbsp;&nbsp;&nbsp;<br/>
-			<input type="checkbox" id="publisher" value="a4">Publisher&nbsp;&nbsp;&nbsp;
-			<input type="checkbox" id="year" value="a5">Year&nbsp;&nbsp;&nbsp;
-			<input type="checkbox" id="extention" value="a6">Extention&nbsp;&nbsp;&nbsp;<br/>
-			<div class='table-place'>
-				<table class='books-table'></table>
+			<div id='kkk'>
+				<input type='text' class='login-input' placeholder='first name' id='firstName'/>
+				<br/>
+				<input type='text' class='login-input' placeholder='last name'id='lasttName'/>
+				<br/>
+				<input type='text' class='login-input' placeholder='email' id='email-reg'/>
+				<br/>
+				<input type='text' class='login-input' placeholder='password' id='pass'/>
+				<br/>
+				<input type='text' class='login-input' placeholder='confirm password'/>
+				<br/>
+				<input type='date' class='login-input' id='date'>
+				<br/>
+				<a href='#' id='submitSave' class='submit-form-button'>Save</a>
 			</div>
+		</div>	
 		</div>
 	 </div>
 	<footer align='center'>

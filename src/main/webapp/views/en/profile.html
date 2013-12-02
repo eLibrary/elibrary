@@ -24,27 +24,32 @@
 	</div>
 	<div id='place'>
 		<div id='chat'>
-			chat
+			<div id='text-chat'></div>
+			<div id='input-div'>
+				<input type='text' id='chat-text'/>
+				<a href='#' id='submit-chat'>send</a>
+			</div>
 		</div>
 		<div id='left-part'>
 			<div class='navigation-buttons'>
-				<a href='#' class='navigation-button'>Search</a><br/>
-				<a href='#' class='navigation-button'>My profile</a><br/>
-				<a href='#' class='navigation-button'>My books</a><br/>
-				<a href='#' class='navigation-button'>My library</a><br/>
-				<a href='#' class='navigation-button'>My upload books</a><br/>
-				<a href='#' class='navigation-button'>My settings</a><br/>
-				<a href='#' class='navigation-button'>Upload new book</a>
+				<a href='./searchBook_user.html' class='navigation-button'>Search</a><br/>
+				<a href='./profile.html' class='navigation-button'>My profile</a><br/>
+				<a href='./library_user.html' class='navigation-button'>My library</a><br/>
+				<a href='./settings_user.html' class='navigation-button'>My settings</a><br/>
+				<a href='./newBook_user.html' class='navigation-button'>Upload new book</a>
 			</div>
 		</div>
-		<div id='right-part'>
+		<div id='right-part' align='center'>
 			<div id='profile'>
 				<div class='avatar-container'>
-					<img alt="" src="" id='avatar'>				
+					<img alt="" src="../../resources/images/smile.jpg" id='avatar'>				
 				</div>
 				<div class='information'>
-					<table id='my-information'></table>
-					<!-- INFORMATION!!! -->
+					<p class='nadpus'>Hello TestUser</p>
+					<p class='nadpus'>First Name: TestUser</p>
+					<p class='nadpus'>Last Name: TestUser</p>
+					<p class='nadpus'>Email: TestUser@gmail.com</p>
+					<p class='nadpus'>Date of birth: 01.01.2013</p>	
 				</div>
 			</div>
 		</div>
