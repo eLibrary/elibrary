@@ -62,6 +62,8 @@ function registration(){
 	var lName = document.getElementById('lastName').value;
 	var email = document.getElementById('email-reg').value;
 	var password = document.getElementById('pass').value;
+	var date = document.getElementById('date').value;
+	console.log(fName, lName, email, password, date);
 		$.ajax({
 	        url : '/elibrary/register',
 	        type : "POST",
