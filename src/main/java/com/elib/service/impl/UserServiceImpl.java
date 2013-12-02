@@ -33,7 +33,7 @@ public class UserServiceImpl implements UserService {
 
   @Override
   public User register(Map<String, Object> userInfo) {
-    if (userInfo != null) {
+    if (userInfo != null && userInfo.size() > 0) {
       User user = new User();
       user.setFirstName((String) userInfo.get(Constants.USER_FIRSTNAME_KEY));
       user.setLastName((String) userInfo.get(Constants.USER_LASTNAME_KEY));
@@ -41,6 +41,7 @@ public class UserServiceImpl implements UserService {
       user.setPassword((String) userInfo.get(Constants.USER_PASSWORD_KEY));
       user.setDateOfBirth((Date) userInfo.get(Constants.USER_DATE_OF_BIRTHD_KEY));
       user.setRole(roleDAO.findByRole(Constants.USER_ROLE_REGISTERED));
+      userDAO.save(user);
     }
     return null;
   }

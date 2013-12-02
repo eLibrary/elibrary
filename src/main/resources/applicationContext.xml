@@ -23,7 +23,7 @@
 	<beans:bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix">
-			<beans:value>/views/</beans:value>
+			<beans:value>/views/en/</beans:value>
 		</beans:property>
 		<beans:property name="suffix">
 			<beans:value>.html</beans:value>

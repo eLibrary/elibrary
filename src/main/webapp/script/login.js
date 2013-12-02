@@ -20,13 +20,15 @@ function submitLogin(){
 	var email = document.getElementById('email-input').value;
 	var password = document.getElementById('pass-input').value;
 		$.ajax({
-	        url : '',
+	        url : '/elibrary/login',
 	        type : "POST",
 	        data : {
 	                email : email,
 	                password : password,  
 	        },
 	        success : function(text) {
+	        	console.log("log:"+text);
+	        	//window.location.replace(text);
 	        }
 		});
 }
@@ -61,9 +63,11 @@ function registration(){
 	var email = document.getElementById('email-reg').value;
 	var password = document.getElementById('pass').value;
 		$.ajax({
-	        url : '',
+	        url : '/elibrary/register',
 	        type : "POST",
 	        data : {
+	        		fName : fName,
+	        		lName : lName,
 	                email : email,
 	                password : password,  
 	        },

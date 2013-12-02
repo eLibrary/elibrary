@@ -142,7 +142,7 @@ public class User implements java.io.Serializable, IEntity<Integer> {
     this.avatar = avatar;
   }
 
-  @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+  @OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
   public Set<UserLibrary> getUserlibraries() {
     return this.userlibraries;
   }
@@ -151,7 +151,7 @@ public class User implements java.io.Serializable, IEntity<Integer> {
     this.userlibraries = userlibraries;
   }
 
-  @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+  @OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
   public Set<Owner> getOwners() {
     return this.owners;
   }
