@@ -26,9 +26,8 @@ function submitLogin(){
 	                email : email,
 	                password : password,  
 	        },
-	        success : function(text) {
-	        	console.log("log:"+text);
-	        	//window.location.replace(text);
+	        success : function(xml) {
+	        	document.body.innerHTML=xml;
 	        }
 		});
 }
@@ -37,19 +36,23 @@ function search(){
 	var bookSearch = document.getElementById('searchValue').value;
 	var table = '<tr><td>Author</td>td>Title</td>td>edition</td>td>Publisher</td>td>Year</td>td>Extention</td></tr>';
 		$.ajax({
-	        url : '',
+	        url : '/elibrary/search',
 	        type : "POST",
-	        data : bookSearch,
-	        success : function(text) {
-	        	for(var i = 0; i < text.length; i++){
+	        data :{
+
+	        	str : bookSearch,
+	        	
+	        }, 
+	        success : function(xml) {
+	        	for(var i = 0; i < xml.length; i++){
 	        		table += 
 	        			'<tr>'+
-		        			'<td>'+text[i].author+'</td>'+
-		        			'td>'+text[i].title+'</td>'+
-		        			'td>'+text[i].edition+'</td>'+
-		        			'td>'+text[i].publisher+'</td>'+
-		        			'td>'+text[i].year+'</td>'+
-		        			'td>'+text[i].extention+'</td>'+
+		        			'<td>'+xml[i].author+'</td>'+
+		        			'td>'+xml[i].title+'</td>'+
+		        			'td>'+xml[i].edition+'</td>'+
+		        			'td>'+xml[i].publisher+'</td>'+
+		        			'td>'+xml[i].year+'</td>'+
+		        			'td>'+xml[i].extention+'</td>'+
 	        			'</tr>';
 	        	}
 	        	document.getElementById('search-table').innerHTML = table;
@@ -73,7 +76,8 @@ function registration(){
 	                email : email,
 	                password : password,  
 	        },
-	        success : function(text) {
+	        success : function(xml) {
+	        	document.body.innerHTML=xml;
 	        }
 		});
 }
